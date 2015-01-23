@@ -15,7 +15,14 @@ public class PageSpiderWorker extends SpiderWorker
     }
 
     @Override
-    protected IWorkLoadStorable getWorkload() {
-        return owner.getPageWorkload();
+    protected String getWorkload()
+    {
+        return owner.getPageWorkload().assignWorkload();
+    }
+
+    @Override
+    protected void onProcessWorkload(String url)
+    {
+
     }
 }

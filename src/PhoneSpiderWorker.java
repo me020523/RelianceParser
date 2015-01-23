@@ -16,9 +16,14 @@ public class PhoneSpiderWorker extends SpiderWorker
     }
 
     @Override
-    protected IWorkLoadStorable getWorkload()
+    protected String getWorkload()
     {
-        return owner.getPhoneWorkload();
+        return owner.getPhoneWorkload().assignWorkload();
     }
 
+    @Override
+    protected void onProcessWorkload(String url)
+    {
+
+    }
 }
