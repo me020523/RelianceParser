@@ -44,7 +44,7 @@ public class SpiderInternalWorkLoad implements IWorkLoadStorable
         if(index < 0)
             return;
         running.remove(index);
-        if(error)
+        if(!error)
             complete.put(url,COMPLETE);
         else
             complete.put(url,ERROR);

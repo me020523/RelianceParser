@@ -31,7 +31,7 @@ public class SpiderWorker extends Thread
             {
                 try
                 {
-                    Thread.sleep(1000);
+                    Thread.sleep(200);
                 }
                 catch (InterruptedException e)
                 {
@@ -42,15 +42,16 @@ public class SpiderWorker extends Thread
             owner.getSpiderDone().workerBegin();
             processWorkload(target);
             owner.getSpiderDone().workerEnd();
+            System.out.println("finish a workload by " + Thread.currentThread().getName());
         }
     }
     private void processWorkload(String url)
     {
         isBusy = true;
-        onProcessWorkload(url);
+        onProcessWorkload(hc,url);
         isBusy = false;
     }
-    protected void onProcessWorkload(String url)
+    protected void onProcessWorkload(HttpClient hc, String url)
     {
 
     }

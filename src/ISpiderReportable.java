@@ -16,4 +16,20 @@ public interface ISpiderReportable
      * @return
      */
     public boolean foundPageLink(String url);
+
+    /**
+     *完成手机详情爬取任务时调用
+     * @param url
+     * @return
+     */
+    public boolean completePhoneWorkload(String url);
+
+    /**
+     * 完成手机列表页面爬取任务时调用
+     * @param url
+     * @return
+     */
+    public boolean completePageWorkload(String url);
+
+    public boolean foundPhoneInfo(PhoneInfo pi);
 }
