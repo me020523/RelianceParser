@@ -36,6 +36,7 @@ public class SpiderWorker extends Thread
                 catch (InterruptedException e)
                 {
                     e.printStackTrace();
+                    continue;
                 }
                 continue;
             }

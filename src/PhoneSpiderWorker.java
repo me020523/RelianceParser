@@ -169,9 +169,7 @@ public class PhoneSpiderWorker extends SpiderWorker
                 String v = tn.getText();
                 v = v.replace("\n","");
                 v = v.replace("r","");
-                if("".equals(v))
-                    continue;
-                else
+                if(!"".equals(v))
                     type = v;
             }
             if("".equals(type))
