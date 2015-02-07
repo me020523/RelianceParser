@@ -2,6 +2,7 @@
  * Created by Administrator on 2015/1/23.
  */
 
+import org.apache.http.client.config.RequestConfig;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
@@ -24,15 +25,23 @@ public class RelianceSpider extends Thread implements ISpiderReportable
 
     private int total = 0;
 
-    private CloseableHttpClient hc = HttpClients.custom()
-            .setConnectionManager(new PoolingHttpClientConnectionManager())
-            .build();
+    private CloseableHttpClient hc = null;
 
     private ArrayList<SpiderWorker> pageWorkers = new ArrayList<SpiderWorker>();
     private ArrayList<SpiderWorker> phoneWorkers = new ArrayList<SpiderWorker>();
 
     public RelianceSpider(String startPage)
     {
+        RequestConfig rc = RequestConfig.custom()
+                .setConnectTimeout(5000)
+                .setConnectTimeout(5000)
+                .setSocketTimeout(5000)
+                .setStaleConnectionCheckEnabled(true)
+                .build();
+        hc = HttpClients.custom()
+                .setDefaultRequestConfig(rc)
+                .setConnectionManager(new PoolingHttpClientConnectionManager())
+                .build();
         pageWorkload = new SpiderInternalWorkLoad();
         phoneWorkload = new SpiderInternalWorkLoad();
         spiderDone = new SpiderDone();
